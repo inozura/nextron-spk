@@ -10,12 +10,9 @@ const clientCredentials = {
   appId: "1:489946727659:web:15fd1f82b62ba515446aae",
 };
 
-try {
+if (firebase.apps.length === 0) {
   firebase.initializeApp(clientCredentials);
-} catch (err) {
-  if (!/already exists/.test(err.message)) {
-    console.error("Firebase initialization error", err.stack);
-  }
 }
 
 export default firebase;
+// export const db = firebase.database();

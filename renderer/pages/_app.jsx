@@ -11,6 +11,9 @@ import {
   InfoCircleOutlined,
   HomeOutlined,
   AppleOutlined,
+  ReloadOutlined,
+  CalculatorOutlined,
+  CloseCircleOutlined,
 } from "@ant-design/icons";
 
 const { Content, Sider } = Layout;
@@ -48,72 +51,133 @@ function MyApp({ Component, pageProps }) {
           }}
           collapsible={true}
           onCollapse={() => setColappsed(!colappsed)}
+          collapsed={colappsed}
         >
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={["0"]}>
-            <Menu.Item key="0" icon={<HomeOutlined />}>
+          <Menu
+            theme="dark"
+            mode="inline"
+            activeKey={
+              router.asPath == "/home"
+                ? "0"
+                : router.asPath == "/kriteria"
+                ? "1"
+                : router.asPath == "/alternatif"
+                ? "2"
+                : router.asPath == "/perhitungan"
+                ? "3"
+                : null
+            }
+            style={{ marginTop: 30 }}
+            defaultSelectedKeys={["0"]}
+            selectedKeys={
+              router.asPath == "/home"
+                ? "0"
+                : router.asPath == "/kriteria"
+                ? "1"
+                : router.asPath == "/alternatif"
+                ? "2"
+                : router.asPath == "/perhitungan"
+                ? "3"
+                : null
+            }
+          >
+            <Menu.Item key="0" icon={<HomeOutlined />} active={true}>
               <Link href="/home">Home</Link>
             </Menu.Item>
             <Menu.Item key="1" icon={<AppleOutlined />}>
-              <Link href="/next">Next</Link>
-            </Menu.Item>
-            <Menu.Item key="2" icon={<UserOutlined />}>
               <Link href="/kriteria">Kriteria</Link>
+            </Menu.Item>
+            <Menu.Item key="2" icon={<ReloadOutlined />}>
+              <Link href="/alternatif">Alternatif</Link>
+            </Menu.Item>
+            <Menu.Item key="3" icon={<CalculatorOutlined />}>
+              <Link href="/perhitungan">Perhitungan</Link>
             </Menu.Item>
           </Menu>
         </Sider>
         <Layout
           className="site-layout"
           style={{
-            marginLeft: colappsed ? 200 : 80,
+            marginLeft: colappsed ? 80 : 200,
             transition: "all 0.2s ease-in-out",
             backgroundColor: "white",
           }}
         >
           <Content
             style={{
-              margin: "24px 16px 0",
               overflow: "initial",
             }}
           >
-            <div
-              className="site-layout-background"
-              style={{ padding: 24, height: "100%" }}
-            >
+            <div className="site-layout-background" style={{ height: "100%" }}>
               <Component {...pageProps} />
             </div>
           </Content>
         </Layout>
       </Layout>
-      {router.asPath !== "/home" && (
+
+      {/* FLOAT BUTTON */}
+      <div
+        style={{
+          position: "fixed",
+          top: 20,
+          right: 20,
+          padding: 5,
+          borderRadius: 50,
+          display: "flex",
+          flexDirection: "row",
+          backgroundColor: "#001529",
+          transition: "all 0.3s ease-in-out",
+        }}
+      >
         <Button
           type="primary"
           shape="circle"
           size="large"
-          style={{ position: "absolute", top: 20, right: 20 }}
           onClick={() => router.back()}
+          style={{
+            backgroundColor: "#001529",
+            borderColor: "#001529",
+            marginRight: 10,
+            display: router.asPath !== "/home" ? "inline-block" : "none",
+            transition: "all 0.3s ease-in-out",
+          }}
         >
           <LeftOutlined />
         </Button>
-      )}
-      <Button
-        type="primary"
-        shape="circle"
-        size="large"
-        style={{ position: "absolute", bottom: 20, right: 20 }}
-        onClick={() => setIsModalVisible(!isModalVisible)}
-      >
-        <InfoCircleOutlined />
-      </Button>
+        <Button
+          type="primary"
+          shape="circle"
+          size="large"
+          onClick={() => setIsModalVisible(!isModalVisible)}
+          style={{
+            backgroundColor: "#002140",
+            transition: "all 0.3s ease-in-out",
+            borderColor: "white",
+          }}
+        >
+          <InfoCircleOutlined />
+        </Button>
+      </div>
 
-      <Modal
-        title="Basic Modal"
-        visible={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+      <Modal visible={isModalVisible} centered footer={null} closable={false}>
+        <h2>Novandra Zulfi Ramdhan</h2>
+        <span>Full Stack Javascript Developer</span>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "flex-end",
+          }}
+        >
+          <Button
+            size="middle"
+            type="primary"
+            htmlType="submit"
+            onClick={() => setIsModalVisible(!isModalVisible)}
+          >
+            <span>Ok</span>
+          </Button>
+        </div>
       </Modal>
     </React.Fragment>
   );

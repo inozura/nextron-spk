@@ -46,7 +46,7 @@ const Kriteria = () => {
 
   return (
     <>
-      <Content style={{ padding: "20px 30px" }}>
+      <Content style={{ padding: "20px 30px", marginTop: 40 }}>
         {!data ? (
           <div
             style={{
@@ -108,6 +108,12 @@ const columns = [
     render: (text) => <span>{text}</span>,
   },
   {
+    title: "Keuntungan",
+    dataIndex: "keuntungan",
+    key: "keuntungan",
+    render: (text) => <span>{text}</span>,
+  },
+  {
     title: "Action",
     key: "action",
     render: (text, record) => (
@@ -117,30 +123,6 @@ const columns = [
         </Button>
       </Space>
     ),
-  },
-];
-
-const data1 = [
-  {
-    key: "1",
-    name: "John Brown",
-    age: 32,
-    address: "New York No. 1 Lake Park",
-    tags: ["nice", "developer"],
-  },
-  {
-    key: "2",
-    name: "Jim Green",
-    age: 42,
-    address: "London No. 1 Lake Park",
-    tags: ["loser"],
-  },
-  {
-    key: "3",
-    name: "Joe Black",
-    age: 32,
-    address: "Sidney No. 1 Lake Park",
-    tags: ["cool", "teacher"],
   },
 ];
 

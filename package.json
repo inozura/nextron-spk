@@ -8,13 +8,19 @@
   "scripts": {
     "dev": "nextron",
     "build": "nextron build",
-    "postinstall": "electron-builder install-app-deps"
+    "postinstall": "electron-builder install-app-deps",
+    "build:all": "nextron build --all",
+    "build:win32": "nextron build --win --ia32",
+    "build:win64": "nextron build --win --x64",
+    "build:mac": "nextron build --mac --x64",
+    "build:linux": "nextron build --linux"
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
     "electron-serve": "^1.1.0",
     "electron-store": "^7.0.2",
-    "firebase": "^8.6.2"
+    "firebase": "^8.6.2",
+    "react-step-wizard": "^5.3.6"
   },
   "devDependencies": {
     "@babel/core": "^7.13.14",
