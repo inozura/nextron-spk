@@ -1,9 +1,8 @@
-<p align="center"><img src="https://i.imgur.com/NrkTPe9.png"></p>
+<p align="center"><img src="https://github.com/inozura/SPK_Nextron/blob/master/demo/2021-05-24-101040_1920x1080_scrot.png"></p>
 
 ## Usage
 
 ```
-$ cd my-app
 
 # using yarn or npm
 $ yarn (or `npm install`)

@@ -190,7 +190,7 @@ function MyApp({ Component, pageProps }) {
         <Col>
           <DingdingOutlined style={{ fontSize: 70, marginBottom: 25 }} />
           <h2 style={{ marginBottom: 1, textAlign: "right" }}>
-            Novandra Zulfi Ramdhan
+            Novandra Zulfi Ramadhan
           </h2>
           <p style={{ textAlign: "right" }}>Full Stack Javascript Developer</p>
         </Col>
