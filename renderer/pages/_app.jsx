@@ -60,7 +60,7 @@ function MyApp({ Component, pageProps }) {
     <React.Fragment>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>SPK - ANALITYC HEARARCHY PROCESS</title>
+        <title>Sistem Pendukung Keputusan - Metode MOORA</title>
       </Head>
       <Layout style={{ backgroundColor: "white" }}>
         <Sider
