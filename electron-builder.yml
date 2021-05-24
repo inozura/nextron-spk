@@ -1,6 +1,6 @@
-appId: com.example.nextron
-productName: My Nextron App
-copyright: Copyright © 2018 Yoshihide Shiono
+appId: com.inozura.SPK-MOORA
+productName: Sistem Pendukung Keputusan - MOORA
+copyright: Copyright © 2021 Novandra Zulfi Ramadhan
 directories:
   output: dist
   buildResources: resources

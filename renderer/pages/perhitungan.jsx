@@ -94,12 +94,13 @@ const Perhitungan = () => {
           display: "flex",
           flexDirection: "row",
           backgroundColor: "#001529",
+          zIndex: 99,
         }}
       >
         <Button
           type="primary"
           shape="circle"
-          size="large"
+          size="middle"
           onClick={() => {
             setInitStep(initStep - 1);
             instance.previousStep();
@@ -116,7 +117,7 @@ const Perhitungan = () => {
         <Button
           type="primary"
           shape="circle"
-          size="large"
+          size="middle"
           onClick={() => {
             setInitStep(initStep + 1);
             instance.nextStep();

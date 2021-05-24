@@ -1,9 +1,9 @@
 {
   "private": true,
-  "name": "my-nextron-app",
-  "description": "My application description",
+  "name": "SPK-Moora",
+  "description": "The Moora method analythc system",
   "version": "1.0.0",
-  "author": "Yoshihide Shiono <shiono.yoshihide@gmail.com>",
+  "author": "Novandra Zulfi Ramadhan",
   "main": "app/background.js",
   "scripts": {
     "dev": "nextron",
@@ -17,9 +17,11 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
+    "check-internet-connected": "^2.0.5",
     "electron-serve": "^1.1.0",
     "electron-store": "^7.0.2",
     "firebase": "^8.6.2",
+    "react-reveal": "^1.2.2",
     "react-step-wizard": "^5.3.6"
   },
   "devDependencies": {

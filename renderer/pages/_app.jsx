@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import { Button, Menu, Layout, Modal } from "antd";
+import { Button, Menu, Layout, Modal, Col } from "antd";
 import { useRouter } from "next/router";
+const shell = require("electron").shell;
 
 import "antd/dist/antd.css";
 import {
@@ -14,26 +15,46 @@ import {
   ReloadOutlined,
   CalculatorOutlined,
   CloseCircleOutlined,
+  DingdingOutlined,
+  GithubFilled,
+  FacebookFilled,
+  TwitterOutlined,
 } from "@ant-design/icons";
+import checkInternetConnected from "check-internet-connected";
 
 const { Content, Sider } = Layout;
 
 function MyApp({ Component, pageProps }) {
   const [colappsed, setColappsed] = useState(true);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isConnected, setIsConnected] = useState(false);
   const router = useRouter();
 
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
+  useEffect(() => {
+    const checkInternet = async () => {
+      setIsConnected(false);
+      const config = {
+        timeout: 10000,
+        retries: 3,
+        domain: "google.com",
+      };
 
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
+      await checkInternetConnected(config)
+        .then(() => {
+          console.log("Connection available");
+          setIsConnected(true);
+        })
+        .catch((err) => {
+          console.log("No connection", err);
+          setIsConnected(true);
+        });
+    };
 
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
+    checkInternet();
+    return () => {
+      setIsConnected(false);
+    };
+  }, []);
 
   return (
     <React.Fragment>
@@ -45,8 +66,8 @@ function MyApp({ Component, pageProps }) {
         <Sider
           style={{
             overflow: "auto",
-            height: "100vh",
-            position: "fixed",
+            height: "100%",
+            position: "absolute",
             left: 0,
           }}
           collapsible={true}
@@ -68,7 +89,6 @@ function MyApp({ Component, pageProps }) {
                 : null
             }
             style={{ marginTop: 30 }}
-            defaultSelectedKeys={["0"]}
             selectedKeys={
               router.asPath == "/home"
                 ? "0"
@@ -127,12 +147,13 @@ function MyApp({ Component, pageProps }) {
           flexDirection: "row",
           backgroundColor: "#001529",
           transition: "all 0.3s ease-in-out",
+          zIndex: 99,
         }}
       >
         <Button
           type="primary"
           shape="circle"
-          size="large"
+          size="middle"
           onClick={() => router.back()}
           style={{
             backgroundColor: "#001529",
@@ -147,7 +168,7 @@ function MyApp({ Component, pageProps }) {
         <Button
           type="primary"
           shape="circle"
-          size="large"
+          size="middle"
           onClick={() => setIsModalVisible(!isModalVisible)}
           style={{
             backgroundColor: "#002140",
@@ -159,9 +180,20 @@ function MyApp({ Component, pageProps }) {
         </Button>
       </div>
 
-      <Modal visible={isModalVisible} centered footer={null} closable={false}>
-        <h2>Novandra Zulfi Ramdhan</h2>
-        <span>Full Stack Javascript Developer</span>
+      <Modal
+        visible={isModalVisible}
+        centered
+        footer={null}
+        closable
+        onCancel={() => setIsModalVisible(!isModalVisible)}
+      >
+        <Col>
+          <DingdingOutlined style={{ fontSize: 70, marginBottom: 25 }} />
+          <h2 style={{ marginBottom: 1, textAlign: "right" }}>
+            Novandra Zulfi Ramdhan
+          </h2>
+          <p style={{ textAlign: "right" }}>Full Stack Javascript Developer</p>
+        </Col>
         <div
           style={{
             display: "flex",
@@ -169,14 +201,20 @@ function MyApp({ Component, pageProps }) {
             justifyContent: "flex-end",
           }}
         >
-          <Button
-            size="middle"
-            type="primary"
-            htmlType="submit"
-            onClick={() => setIsModalVisible(!isModalVisible)}
-          >
-            <span>Ok</span>
-          </Button>
+          <GithubFilled
+            style={{ fontSize: 30, margin: 10, cursor: "pointer" }}
+            onClick={() => shell.openExternal("https://github.com/inozura")}
+          />
+          <FacebookFilled
+            style={{ fontSize: 30, margin: 10, cursor: "pointer" }}
+            onClick={() =>
+              shell.openExternal("https://www.facebook.com/iNoozura")
+            }
+          />
+          <TwitterOutlined
+            style={{ fontSize: 30, margin: 10, cursor: "pointer" }}
+            onClick={() => shell.openExternal("https://twitter.com/inoozura")}
+          />
         </div>
       </Modal>
     </React.Fragment>

@@ -2,21 +2,6 @@
 
 ## Usage
 
-### Create an App
-
-```
-# with npx
-$ npx create-nextron-app my-app --example with-javascript-ant-design
-
-# with yarn
-$ yarn create nextron-app my-app --example with-javascript-ant-design
-
-# with pnpx
-$ pnpx create-nextron-app my-app --example with-javascript-ant-design
-```
-
-### Install Dependencies
-
 ```
 $ cd my-app
 
