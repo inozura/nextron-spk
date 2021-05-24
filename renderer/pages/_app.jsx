@@ -67,7 +67,7 @@ function MyApp({ Component, pageProps }) {
           style={{
             overflow: "auto",
             height: "100%",
-            position: "absolute",
+            position: "fixed",
             left: 0,
           }}
           collapsible={true}
