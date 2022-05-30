@@ -8,13 +8,7 @@ import {
   Modal,
   Form,
   Input,
-  Radio,
   Select,
-  Cascader,
-  DatePicker,
-  InputNumber,
-  TreeSelect,
-  Switch,
 } from "antd";
 import {
   PlusCircleOutlined,
@@ -249,7 +243,7 @@ const Alternatif = () => {
             htmlType="submit"
             // onClick={() => handleStoreData()}
             style={{ marginLeft: 5 }}
-            disabled={isLoading}
+            disabled
           >
             {isLoading && <LoadingOutlined />}
             <span> Submit</span>
@@ -308,7 +302,7 @@ const columns = [
     key: "action",
     render: (text, record) => (
       <Space size="middle">
-        <Button type="primary" danger>
+        <Button type="primary" danger disabled>
           Delete
         </Button>
       </Space>

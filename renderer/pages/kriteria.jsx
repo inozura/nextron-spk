@@ -1,23 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import {
-  Layout,
-  Form,
-  Select,
-  InputNumber,
-  DatePicker,
-  Switch,
-  Slider,
-  Button,
-  Alert,
-  Table,
-  Tag,
-  Space,
-} from "antd";
+import { Layout, Button, Table, Space } from "antd";
 import { PlusCircleOutlined, LoadingOutlined } from "@ant-design/icons";
 import fire from "../config/firebase";
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 
 const Kriteria = () => {
   const [data, setData] = useState();
@@ -34,6 +20,7 @@ const Kriteria = () => {
             ...doc.data(),
           }));
           setData(res);
+          console.log("res", res);
         });
     } catch (err) {
       console.log(err);
@@ -73,7 +60,7 @@ const Kriteria = () => {
 
             {/* MAIN */}
             <div style={{ marginTop: 30, marginBottom: 10 }}>
-              <Button size="middle" type="ghost" htmlType="submit">
+              <Button size="middle" type="ghost" htmlType="submit" disabled>
                 <span>Tambah Data </span>
                 <PlusCircleOutlined size={20} />
               </Button>
@@ -118,7 +105,7 @@ const columns = [
     key: "action",
     render: (text, record) => (
       <Space size="middle">
-        <Button type="primary" danger>
+        <Button type="primary" danger disabled>
           Delete
         </Button>
       </Space>
