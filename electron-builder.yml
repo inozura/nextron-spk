@@ -9,4 +9,6 @@ files:
     filter:
       - package.json
       - app
+mac:
+  icon: "renderer/public/images/logo.icns"
 publish: null
