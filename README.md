@@ -1,3 +1,5 @@
+# Next JS Electron Decision Support System
+
 <p align="center"><img src="https://github.com/inozura/SPK_Nextron/blob/master/demo/2021-05-24-101040_1920x1080_scrot.png"></p>
 
 ## Usage
